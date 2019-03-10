@@ -18,10 +18,8 @@ function replaceUPDATE(image) {
         var thisImageHeight = image.clientHeight;
         var thisImageWidth = image.clientWidth;
         console.log("reached replace one insideinside");
-        //if (thisImageHeight != 0 && thisImageHeight != 0){
-            image.setAttribute('src', 'https://placedog.net/' + thisImageHeight + '/' + thisImageWidth)
-            image.setAttribute('srcset', 'https://placedog.net/' + thisImageHeight + '/' + thisImageWidth)
-        //}
+        image.setAttribute('src', 'https://placedog.net/' + thisImageHeight + '/' + thisImageWidth)
+        image.setAttribute('srcset', 'https://placedog.net/' + thisImageHeight + '/' + thisImageWidth)
     }
 }
 
