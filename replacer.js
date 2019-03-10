@@ -1,3 +1,4 @@
+// replaces all images at start
 chrome.storage.sync.get('name', function(data) {
     if (data.name == "Kevin Cong Pei") {
         alert(data.name);
@@ -10,20 +11,21 @@ chrome.storage.sync.get('name', function(data) {
     }
 });
 
+// used to replace all images at start
 function replace(image) {
     console.log("will mutate: " + image.src);   
 
     var thisImageHeight = image.clientHeight;
-    var thisImageWidth = image.clientWidth;
-    //if (!(thisImageHeight == 0 || thisImageWidth == 0)) {  
-        image.classList.add('we-already-changed-this');
-        image.setAttribute('src', 'https://placedog.net/' + thisImageHeight + '/' + thisImageWidth);
-        image.setAttribute('srcset', 'https://placedog.net/' + thisImageHeight + '/' + thisImageWidth);
-    //}
+    var thisImageWidth = image.clientWidth; 
+    
+    image.classList.add('we-already-changed-this');
+    image.setAttribute('src', 'https://placedog.net/' + thisImageHeight + '/' + thisImageWidth);
+    image.setAttribute('srcset', 'https://placedog.net/' + thisImageHeight + '/' + thisImageWidth);
 
     console.log("done changing: " + image.src);
 }
 
+// used to replace updated images
 function replaceOne(image) {
     image = image.target;
 
