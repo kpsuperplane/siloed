@@ -8,19 +8,21 @@ function replaceAllInitial() {
 function replaceImage(image) {
     
     if(image instanceof HTMLImageElement){
-        if(image.src != undefined && (image.src[0] == 'd' || image.src[0] == 'c'))
+        if(image.src != undefined && (image.src.indexOf('image/png') != -1 || image.src[0] == 'c'))
         return;
         var thisImageHeight = image.clientHeight;
         var thisImageWidth = image.clientWidth;
         if (thisImageHeight != 0 && thisImageHeight != 0){
             const src = image.src;
-            const loading = chrome.runtime.getURL('/assets/img/loading.gif');
-            image.setAttribute('src', loading);
-            image.setAttribute('srcset', loading);
-            chrome.runtime.sendMessage({url: src}, ({url}) => {
-                image.setAttribute('src', url);
-                image.setAttribute('srcset', url);
-            });
+            if (src) {
+                const loading = chrome.runtime.getURL('/assets/img/loading.gif');
+                image.setAttribute('src', loading);
+                image.setAttribute('srcset', loading);
+                chrome.runtime.sendMessage({url: src}, ({url}) => {
+                    image.setAttribute('src', url);
+                    image.setAttribute('srcset', url);
+                });
+            }
         }
     }
 }
