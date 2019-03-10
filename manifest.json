@@ -21,7 +21,7 @@
         "scripts": ["background.js", "face-api.min.js", "image.js"],
         "persistent": false
     },
-    "web_accessible_resources": ["assets/*"],
+    "web_accessible_resources": ["assets/*", "replacer.js"],
     "icons": {
         "16": "images/airpod-cat-16.png",
         "32": "images/airpod-cat-32.png",
