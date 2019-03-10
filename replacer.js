@@ -18,7 +18,7 @@ function replace(image) {
     var thisImageHeight = image.clientHeight;
     var thisImageWidth = image.clientWidth; 
     
-    image.classList.add('we-already-changed-this');
+    // image.classList.add('we-already-changed-this');
     image.setAttribute('src', 'https://placedog.net/' + thisImageHeight + '/' + thisImageWidth);
     image.setAttribute('srcset', 'https://placedog.net/' + thisImageHeight + '/' + thisImageWidth);
 
@@ -37,7 +37,7 @@ function replaceOne(image) {
         var thisImageWidth = image.clientWidth;
         console.log("reached replace one insideinside");
         if(thisImageHeight != 0 && thisImageHeight != 0){
-            image.classList.add('we-already-changed-this');
+            // image.classList.add('we-already-changed-this');
             image.setAttribute('src', 'https://placedog.net/' + thisImageHeight + '/' + thisImageWidth)
             image.setAttribute('srcset', 'https://placedog.net/' + thisImageHeight + '/' + thisImageWidth)
         }
@@ -55,9 +55,9 @@ var config = { attributes: true, childList: true, subtree: true };
 var callback = function(mutationsList, observer) {
     //replace(mutationsList);
     for(var mutation of mutationsList) {
-        if (!mutation.target.classList.contains('we-already-changed-this')) {
+        //if (!mutation.target.classList.contains('we-already-changed-this')) {
             replaceOne(mutation);
-        }
+        //}
     }
 };
 
