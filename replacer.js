@@ -10,15 +10,30 @@ chrome.storage.sync.get('name', function(data) {
     }
 });
 
-function replaceOne(image) {
-    if(image.src != undefined && image.src.indexOf('placedog') != -1)
-        return;
-
+function replaceUPDATE(image) {
+    if(image.src != undefined && image.src.indexOf('placedog') != -1) 
+    return;
+    
     if(image instanceof HTMLImageElement){
         var thisImageHeight = image.clientHeight;
         var thisImageWidth = image.clientWidth;
         console.log("reached replace one insideinside");
-        if(thisImageHeight != 0 && thisImageHeight != 0){
+        //if (thisImageHeight != 0 && thisImageHeight != 0){
+            image.setAttribute('src', 'https://placedog.net/' + thisImageHeight + '/' + thisImageWidth)
+            image.setAttribute('srcset', 'https://placedog.net/' + thisImageHeight + '/' + thisImageWidth)
+        //}
+    }
+}
+
+function replaceOne(image) {
+    if(image.src != undefined && image.src.indexOf('placedog') != -1) 
+    return;
+    
+    if(image instanceof HTMLImageElement){
+        var thisImageHeight = image.clientHeight;
+        var thisImageWidth = image.clientWidth;
+        console.log("reached replace one insideinside");
+        if (thisImageHeight != 0 && thisImageHeight != 0){
             image.setAttribute('src', 'https://placedog.net/' + thisImageHeight + '/' + thisImageWidth)
             image.setAttribute('srcset', 'https://placedog.net/' + thisImageHeight + '/' + thisImageWidth)
         }
@@ -38,7 +53,7 @@ var callback = function(mutationsList, observer) {
         if (mutation.type == 'attributes') {
             //console.log('The ' + mutation.attributeName + ' attribute was modified.');
             if (mutation.attributeName == 'src') {
-                replaceOne(mutation.target);
+                replaceUPDATE(mutation.target);
             }
         }
         
