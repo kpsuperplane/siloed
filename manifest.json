@@ -26,5 +26,6 @@
         "32": "images/airpod-cat-32.png",
         "48": "images/airpod-cat-48.png",
         "128": "images/airpod-cat-128.png"
-    }
+    },
+    "web_accessible_resources": ["replacer.js"]
 }
