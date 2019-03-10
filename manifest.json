@@ -1,0 +1,30 @@
+  {
+    "name": "Cats Will Take Over The World",
+    "version": "1.0",
+    "description": "hi bitches",
+    "manifest_version": 2,
+    "options_page": "options.html",
+    "permissions": [
+        "activeTab",
+        "declarativeContent",
+        "<all_urls>",
+        "storage"
+    ],
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js":["replacer.js"],
+            "run_at": "document_end"
+        }
+    ],
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "icons": {
+        "16": "images/airpod-cat-16.png",
+        "32": "images/airpod-cat-32.png",
+        "48": "images/airpod-cat-48.png",
+        "128": "images/airpod-cat-128.png"
+    }
+}
