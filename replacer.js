@@ -1,15 +1,16 @@
 chrome.storage.sync.get('name', function(data) {
     if (data.name == "Kevin Cong Pei") {
         alert(data.name);
-        replace(document);
+        var allImages = document.getElementsByTagName('img');
+        for (var i = 0; i < allImages.length; i++) {  
+            replaceOne(allImages[i]);
+        }
     } else {
         alert("WRONG PERSON ABORT ABORT");
     }
 });
 
 function replaceOne(image) {
-    image = image.target;
-
     if(image.src != undefined && image.src.indexOf('placedog') != -1)
         return;
 
@@ -22,23 +23,7 @@ function replaceOne(image) {
             image.setAttribute('srcset', 'https://placedog.net/' + thisImageHeight + '/' + thisImageWidth)
         }
     }
-
 }
-
-function replaceUPDATED(image) {
-    //console.log("will mutate: " + image.src);   
-
-    var thisImageHeight = image.clientHeight;
-    var thisImageWidth = image.clientWidth;
-    //if (!(thisImageHeight == 0 || thisImageWidth == 0)) {  
-        image.classList.add('we-already-changed-this');
-        image.setAttribute('src', 'https://placedog.net/' + thisImageHeight + '/' + thisImageWidth);
-        image.setAttribute('srcset', 'https://placedog.net/' + thisImageHeight + '/' + thisImageWidth);
-    //}
-
-    //console.log("done changing: " + image.src);
-}
-
 
 // Select the node that will be observed for mutations
 var targetNode = document.querySelector('body');
@@ -53,13 +38,11 @@ var callback = function(mutationsList, observer) {
         if (mutation.type == 'attributes') {
             //console.log('The ' + mutation.attributeName + ' attribute was modified.');
             if (mutation.attributeName == 'src') {
-                if (!mutation.target.classList.contains('we-already-changed-this')) {
-                    replaceUPDATED(mutation.target);
-                }
+                replaceOne(mutation.target);
             }
         }
         
-        replaceOne(mutation);
+        replaceOne(mutation.target);
     }
 };
 
