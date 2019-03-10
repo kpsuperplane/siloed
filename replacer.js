@@ -9,9 +9,16 @@ function replaceAllInitial() {
 
 // changes image edits according to slider info here
 function replaceImage(image, scale, thisImageHeight, thisImageWidth) {
-    if (scale == '100') {
+    scale = parseInt(scale);
+    if (scale <= 100 && scale > 75) {
         image.setAttribute('src', 'https://placedog.net/' + thisImageWidth + '/' + thisImageHeight);
         image.setAttribute('srcset', 'https://placedog.net/' + thisImageWidth + '/' + thisImageHeight);
+    } else if (scale <= 75 && scale > 50) {
+
+    } else if (scale <= 50 && scale > 25) {
+
+    } else {
+        
     }
 }
 
